@@ -6,29 +6,24 @@ import MovieCard from "./MovieCard";
 //API KEY : 5fe36323
 const API_URL = 'http://www.omdbapi.com?apikey=5fe36323';
 
-// const movie1 = {
-//     "Title": "The Amazing Spiderman 2 Webb Cut",
-//     "Year": "2021",
-//     "imdbID": "tt18351128",
-//     "Type": "movie",
-//     "Poster": "https://m.media-amazon.com/images/M/MV5BYzYzZDViNWYtNWViMS00NDMxLThlN2YtZjFkOWMwODkzNzhiXkEyXkFqcGdeQXVyMTUwMzM4NzU0._V1_SX300.jpg"
-// }
-
 const App = () => {
 
     const [movies,setMovies] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("spiderman");
 
     const searchMovies = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`);
         const data = await response.json();
-    
         setMovies(data.Search);
     }
 
     useEffect(()=>{
-        searchMovies('Spiderman');
-    },[]);
+        if (searchTerm==''){
+             searchMovies('spiderman');
+        } else {
+            searchMovies(searchTerm);
+        }
+    },[searchTerm]);
 
     return (
         <div className="app">
@@ -56,7 +51,6 @@ const App = () => {
                         <h2>No movies Found</h2>
                     </div>
             )}
-
         </div>
     )
 }
