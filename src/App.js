@@ -9,7 +9,7 @@ const API_URL = 'http://www.omdbapi.com?apikey=5fe36323';
 const App = () => {
 
     const [movies,setMovies] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("spiderman");
+    const [searchTerm, setSearchTerm] = useState("");
 
     const searchMovies = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`);
