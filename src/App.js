@@ -19,7 +19,7 @@ const App = () => {
 
     useEffect(()=>{
         if (searchTerm==''){
-             searchMovies('spiderman');
+             searchMovies('batman');
         } else {
             searchMovies(searchTerm);
         }
